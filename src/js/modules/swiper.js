@@ -22,6 +22,7 @@ export default function swiper_func(){
    //
    //  });
    //  //swiper.init();
+
     console.log("reached swiper")
 
 
