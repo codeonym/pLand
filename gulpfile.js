@@ -8,45 +8,81 @@ const sass =require('gulp-sass')(require('sass'));
 const auto = require("gulp-autoprefixer");
 const concat = require("gulp-concat");
 const minify  = require("gulp-minify");
+const babelify = require("babelify");
+const browserify = require("browserify");
+const rename = require("gulp-rename");
+const source = require("vinyl-source-stream");
+const buffer = require("vinyl-buffer");
+const uglify = require("gulp-uglify");
 
+//stylesheet paths
+let cssSRC="main.scss";
+let cssFolder="src/stylesheets/";
+let cssDist="./dist/css/";
+let cssFiles=[cssSRC];
+let cssWatch={
+    css:"src/stylesheets/**/*.css",
+    scss:"src/stylesheets/**/*.scss"
+};
+
+//scripts paths
+let  jsSRC="main.js";
+let jsFolder="src/js/";
+let jsDist="./dist/js/";
+let jsFiles=[jsSRC];
+let jsWatch="src/js/**/*.js";
+
+// html paths
+let htmlSRC="main.pug";
+let htmlFolder="src/html/";
+let htmlDist="./dist/";
+let htmlFiles=[htmlSRC];
+let htmlWatch="src/html/**/*.pug";
 
 // html task
 gulp.task('html',()=> {
-    // render .pug files to html file
-    return gulp.src("./src/html/*.pug")
-        .pipe(pug({pretty:true}))
-        .pipe(gulp.dest('./dist'))
-        .pipe(connect.reload());
-        ;
+    htmlFiles.map((entry)=>{
+       return gulp.src(htmlFolder + entry)
+           .pipe(pug({pretty: true}))
+           .pipe(gulp.dest(htmlDist));
+    });
 });
 
 // css task
 gulp.task("css", ()=>{
-
-    // render all stylesheets to css file
-    return gulp.src(["./src/stylesheets/**/*.scss","./src/stylesheets/**/*.css"])
-        .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle :'compressed'}))
-        .pipe(auto())
-        .pipe(concat("main.css"))
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("./dist/css"));
+    cssFiles.map((entry)=>{
+       return gulp.src(cssFolder + entry)
+           .pipe(sourcemaps.init())
+           .pipe(sass({
+               outputStyle :'compressed',
+               errorLogToConsole:true,
+           }))
+           .pipe(auto())
+           .on("error",console.error.bind(console))
+           .pipe(rename({suffix: '.min'}))
+           .pipe(sourcemaps.write("./"))
+           .pipe(gulp.dest(cssDist));
+    });
 })
 
 // scripts task
 gulp.task("scripts", ()=>{
-
-    // render scripts to js files
-   return gulp.src("./src/js/*.js")
-      // .pipe(minify())
-       .pipe(gulp.dest("./dist/js"));
+    jsFiles.map((entry)=>{
+        return browserify({
+            entries:[jsFolder + entry]
+        }).transform(babelify,{
+            presets:["env"]
+        }).bundle()
+        .pipe(source(entry))
+        .pipe(rename({extname:".min.js"}))
+            .pipe(buffer())
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(uglify())
+            .pipe(sourcemaps.write("./"))
+            .pipe(gulp.dest(jsDist));
+    });
 });
-gulp.task("jsModules", ()=>{
 
-    // render scripts to js files
-    return gulp.src("./src/js/modules/*.mjs")
-        .pipe(gulp.dest("./dist/js/modules"));
-});
 
 // connect task
 gulp.task("connect", ()=> {
@@ -59,12 +95,10 @@ gulp.task("connect", ()=> {
 // watch task
 gulp.task("watch", ()=>{
     //livereload everytime something changes in those paths
-    gulp.watch(["./src/html/**/*.pug"],gulp.series("html"));
-    gulp.watch("./src/stylesheets/**/**/*.css",gulp.series("css"));
-    gulp.watch("./src/stylesheets/**/**/*.scss",gulp.series("css"));
-    // gulp.watch("./src/stylesheets/*.scss",gulp.series("css"));
-    gulp.watch("./src/js/**/*.js",gulp.series("jsModules"));
-    gulp.watch("./src/js/**/*.js",gulp.series("scripts"));
+    gulp.watch(htmlWatch,gulp.series("html"));
+    gulp.watch(cssWatch.css,gulp.series("css"));
+    gulp.watch(cssWatch.scss,gulp.series("css"));
+    gulp.watch(jsWatch,gulp.series("scripts"));
 })
 
 //set gulp default tasks to connect and watch => livereload
