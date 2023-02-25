@@ -1,0 +1,40 @@
+@use "../variables/mediaqueries.scss" as *;
+@use "../variables/paddings.scss" as *;
+@media(max-width:$sm-screen-max) {
+  header,section{
+    .container {
+      padding:$sm-screen-padding;
+    }
+  }
+}
+@media(min-width:$sm-screen){
+  header,section{
+    .container {
+      margin:auto;
+      width:750px;
+    }
+  }
+  section {
+    padding-top:$section-padding;
+    padding-bottom:$section-padding;
+
+  }
+}
+
+@media(min-width:$md-screen){
+  header , section {
+    .container {
+      margin:auto;
+      width:970px;
+    }
+  }
+}
+
+@media(min-width:$lg-screen){
+  header , section {
+    .container {
+      margin:auto;
+      width:1170px;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@use "../themes/dark.scss" as *;
+//global rules
+@font-face {
+  font-family: "GreatVibes";
+  src: url("../assets/fonts/GreatVibes.ttf");
+}
+@font-face {
+  font-family: "Tourney";
+  src: url("../assets/fonts/Tourney.ttf");
+}
+@font-face {
+  font-family: "Pacifico";
+  src: url("../assets/fonts/Pacifico.ttf");
+}
+@font-face {
+  font-family: "TiltPrism";
+  src: url("../assets/fonts/TiltPrism.ttf");
+}
+@font-face {
+  font-family: "RampartOne";
+  src: url("../assets/fonts/RampartOne.ttf");
+}
+* {
+  font-family:"Pacifico","Tourney","arial";
+  text-transform:capitalize;
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+  color:$text-color;
+  text-decoration:none;
+}
+html,body {
+  background:$secondary-color;
+}

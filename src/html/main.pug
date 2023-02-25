@@ -1,0 +1,15 @@
+//Declare Variables Here
+- $title = "portfolio"
+doctype html
+html(lang="en")
+    head
+        //including links file
+        include ./pug/links
+        title #{$title}
+    body
+        //include header
+        include ./pug/header.pug
+        include ./pug/portfolio.pug
+
+        //include scripts file
+        include ./pug/scripts.pug

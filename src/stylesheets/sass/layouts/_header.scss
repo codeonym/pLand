@@ -1,0 +1,86 @@
+//includes
+@use "../helpers/mixins.scss" as *;
+@use "../themes/dark.scss" as *;
+@use "../variables/mediaqueries.scss" as *;
+@use "../variables/transitions.scss" as *;
+@use "../variables/colors.scss" as *;
+
+
+#header {
+  background-color: $primary-color;
+  .container {
+    @include flx(space-between);
+    font-size: 1.5rem;
+    padding-top: 0.8rem;
+    .logo {
+      width: 120px;
+      display: block;
+      cursor: pointer;
+
+      img {
+      width: 100%;
+      }
+    }
+    @media(min-width:$sm-screen){
+      .sidebar-btn {
+        display:none;
+      }
+    }
+    .links {
+      position:relative;
+      list-style: none;
+      @include flx();
+      gap:40px;
+      flex:0.5;
+      .sidebar-btn-close {
+        top:15px;
+        z-index: 100;
+        left:50%;
+        color:$color-red;
+        width:30px;
+        height:30px;
+        cursor:pointer;
+        text-align:center;
+        transition: all $fast-transition;
+        &:hover {
+          transform:scale(1.2);
+        }
+      }
+      li {
+
+        a {
+          transition:all $fast-transition;
+          &:hover{
+            color:$color-red;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width:$sm-screen-max) {
+  #header {
+    .container {
+      .sidebar-btn {
+        margin-right:20px;
+        transition:all $fast-transition;
+        &:hover {
+          transform:scale(1.2);
+        }
+      }
+      position: relative;
+      .links {
+        display:none ;
+        position: absolute;
+        top:0;
+        right:0;
+        width:100%;
+        height:100vh;
+        flex:1;
+        flex-direction:column;
+        background-color:$primary-color;
+      }
+    }
+  }
+}

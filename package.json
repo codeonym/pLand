@@ -1,0 +1,48 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "this project is for personal use only (demo), not meant for production",
+  "main": "dist/main.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiraXdesu/portfolio_E.git"
+  },
+  "keywords": [
+    "portfolio",
+    "gsap",
+    "threejs",
+    "html",
+    "css",
+    "sass",
+    "gulp",
+    "js"
+  ],
+  "author": "kiraXdesu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiraXdesu/portfolio_E/issues"
+  },
+  "homepage": "https://github.com/kiraXdesu/portfolio_E#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-livereload": "^4.0.2",
+    "gulp-minify": "^3.1.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.56.1"
+  },
+  "dependencies": {
+    "gsap": "^3.11.4",
+    "jquery": "^3.6.3",
+    "swiper": "^9.0.5",
+    "three": "^0.150.0"
+  }
+}

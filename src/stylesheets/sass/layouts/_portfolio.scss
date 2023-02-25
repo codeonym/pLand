@@ -1,0 +1,56 @@
+@use "../helpers/mixins.scss" as *;
+@use "../variables/fontsize.scss" as *;
+@use "../variables/mediaqueries.scss" as *;
+@use "../variables/lineheight.scss" as *;
+
+
+
+#portfolio {
+  .container {
+    height:calc(100vh - 200px);
+    display:grid;
+    grid-template-rows: repeat(12,1fr);
+    grid-gap:20px;
+    & * {
+      background-color:rgba(255,255,255,.3)
+    }
+    .row{
+      @include flx();
+      @media(min-width:$sm-screen){
+        font-size:$extra-large-font;
+      }
+      @media(min-width:$lg-screen){
+        font-size:$extra-extra-large-font;
+      }
+      @media(max-width:$sm-screen-max){
+        font-size:$large-font;
+      }
+      &:first-child {
+        grid-row-start: 1;
+        grid-row-end:3;
+      }
+      &:nth-child(2) {
+        grid-row-start: 3;
+        grid-row-end:9;
+      }
+      &:nth-child(3) {
+        grid-row-start: 9;
+        grid-row-end:10;
+      }
+      &:last-child {
+        grid-row-start: 10;
+        grid-row-end:13;
+        @include grid;
+        .col {
+          height:100%;
+        }
+      }
+      .slogan {
+        letter-spacing:2px;
+        line-height:$normal-line-height;
+      }
+      }
+
+
+  }
+}
