@@ -1,0 +1,54 @@
+
+@mixin bg_grad($dir,$color:#000,$width:10) {
+  @if $dir=='top-left' {
+    box-shadow:
+            -#{$width}px -#{$width}px 0px 0px rgba($color,1),
+            -#{2 * $width}px -#{2 * $width}px 0px 0px rgba($color,.7),
+            -#{3 * $width}px -#{3 * $width}px 0px 0px rgba($color,.3),
+  }
+  @if $dir=='bottom-right' {
+    box-shadow:
+            #{$width}px #{$width}px 0px 0px rgba($color,1),
+            #{2 * $width}px #{2 * $width}px 0px 0px rgba($color,.7),
+            #{3 * $width}px #{3 * $width}px 0px 0px rgba($color,.3);
+  }
+  @if $dir=='top-right' {
+    box-shadow:
+            #{$width}px -#{$width}px 0px 0px rgba($color,1),
+            #{2 * $width}px -#{2 * $width}px 0px 0px rgba($color,.7),
+            #{3 * $width}px -#{3 * $width}px 0px 0px rgba($color,.3);
+  }
+  @if $dir=='bottom-left' {
+    box-shadow:
+            -#{$width}px #{$width}px 0px 0px rgba($color,1),
+            -#{2 * $width}px #{2 * $width}px 0px 0px rgba($color,.7),
+            -#{3 * $width}px #{3 * $width}px 0px 0px rgba($color,.3);
+  }
+  @if $dir=='center-out' {
+    box-shadow:
+            #{$width}px #{$width}px 0px 0px rgba($color,1),
+            -#{2 * $width}px -#{2 * $width}px 0px 0px rgba($color,.7),
+            #{3 * $width}px #{3 * $width}px 0px 0px rgba($color,.3);
+  }
+  @if $dir=='center-in' {
+    box-shadow:
+            -#{$width}px -#{$width}px 0px 0px rgba($color,1),
+            #{2 * $width}px #{2 * $width}px 0px 0px rgba($color,.7),
+            -#{3 * $width}px -#{3 * $width}px 0px 0px rgba($color,.3);
+  }
+  @if $dir=='rounded' {
+    box-shadow:
+            -#{$width}px 0px 0px 0px rgba($color,1),
+            -#{2 * $width}px 0px 0px 0px rgba($color,.7),
+            -#{3 * $width}px 0px 0px 0px rgba($color,.3),
+            #{$width}px 0px 0px 0px rgba($color,1),
+            #{2 * $width}px 0px 0px 0px rgba($color,.7),
+            #{3 * $width}px 0px 0px 0px rgba($color,.3),
+            0px -#{$width}px  0px 0px rgba($color,1),
+            0px -#{2 * $width}px  0px 0px rgba($color,.7),
+            0px -#{3 * $width}px  0px 0px rgba($color,.3),
+            0px #{$width}px  0px 0px rgba($color,1),
+            0px #{2 * $width}px  0px 0px rgba($color,.7),
+            0px #{3 * $width}px  0px 0px rgba($color,.3);
+  }
+}

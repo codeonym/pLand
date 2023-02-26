@@ -123,7 +123,10 @@ jsFiles.map((entry)=> {
         return browserify({
             entries: [jsFolder + entry]
         }).transform(babelify, {
-            presets: ["env"]
+            global: true,
+            "presets": [
+                "@babel/preset-env"
+            ]
         }).bundle()
             .pipe(source(entry))
             .pipe(rename({extname: ".min.js"}))

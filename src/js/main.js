@@ -3,5 +3,6 @@ import navbar from "./modules/navBar.js";
 onload=()=>{
     // import modules
    navbar();
+
    swiper_func();
 }

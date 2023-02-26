@@ -1,8 +1,14 @@
-@use "../helpers/mixins.scss" as *;
+@use "../helpers/mixins" as *;
 @use "../variables/fontsize.scss" as *;
 @use "../variables/mediaqueries.scss" as *;
 @use "../variables/lineheight.scss" as *;
+@use "../variables/borderradius.scss" as *;
+@use "../variables/transitions.scss" as *;
+@use "../variables/colors.scss" as *;
+@use "../components/flower" as *;
 
+//this plugin is missed up LoL
+//@use "../../../../node_modules/swiper/swiper.scss" as *;
 
 
 #portfolio {
@@ -12,7 +18,7 @@
     grid-template-rows: repeat(12,1fr);
     grid-gap:20px;
     & * {
-      background-color:rgba(255,255,255,.3)
+      //background-color:rgba(255,255,255,.3)
     }
     .row{
       @include flx();
@@ -32,10 +38,68 @@
       &:nth-child(2) {
         grid-row-start: 3;
         grid-row-end:9;
+        &.swiper-container {
+          background-color:transparent;
+          overflow:hidden;
+          position:relative;
+          .swiper-wrapper {
+            position:relative;
+            @include flx();
+            flex-gap:30px;
+            .swiper-slide {
+              background:transparent;
+              position:absolute;
+              transition:all $normal-transition;
+              width:300px;
+              border-radius:$border-radius-card;
+              overflow:hidden;
+              @include flx;
+              img {
+                border-radius:$border-radius-card;
+                margin-top:10px;
+                margin-bottom:10px;
+                width:280px;
+                max-height: 90%;
+              }
+            }
+          }
+          .swiper-btn{
+            position:absolute;
+            border-radius:$border-radius-circle;
+            top:50%;
+            opacity:0.2;
+            z-index: 20;
+            transition:ease-in  $fast-transition;
+            &.swiper-button-prev {
+              left:5px ;
+              transform:translate(-100px,-50%) scale(1);
+            }
+            &.swiper-button-next {
+              right:5px ;
+              transform:translate(100px,-50%) scale(1);
+            }
+            &:hover {
+              opacity:.6;
+              transform:translate(0,-50%) scale(1.3);
+            }
+          }
+          &:hover {
+            .swiper-button-prev {
+              transform:translate(0,-50%) scale(1);
+            }
+            .swiper-button-next {
+              transform:translate(0,-50%) scale(1);
+            }
+          }
+        }
       }
       &:nth-child(3) {
         grid-row-start: 9;
         grid-row-end:10;
+        h4 {
+            font-size:$normal-font;
+          font-weight:100;
+        }
       }
       &:last-child {
         grid-row-start: 10;
@@ -43,11 +107,23 @@
         @include grid;
         .col {
           height:100%;
+          @include flx(center,space-between,column);
+          .icon {
+            height:50px;
+            position:relative;
+          @include flower(20,$color-red,$color-red,10,50%,50%);
+          }
+          p {
+            flex:0.5;
+            margin-top:20px;
+            font-weight:100;
+            line-height:$normal-line-height;
+            font-size:$normal-font;
+          }
         }
       }
       .slogan {
         letter-spacing:2px;
-
         line-height:$normal-line-height;
       }
       }

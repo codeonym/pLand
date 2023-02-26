@@ -1,0 +1,24 @@
+@use "./gradient_background" as *;
+
+
+@mixin flower($size:20,$color:#111,$bg_color:#000,$diff:calc($size / 2 ),$posX:50%,$posY:100%){
+  @if $diff=="" {
+    $diff:calc($size / 2 );
+  }
+  &::before,&::after {
+    position: absolute;
+    content:"";
+    top:$posY;
+    left:$posX;
+    transform:translate(-50%,-50%);
+    width:#{$size}px;
+    height:#{$size}px;
+    border-radius: 50%;
+    background-color: $color;
+    @include bg_grad(rounded,$bg_color,$diff);
+    @content;
+  }
+  &::after {
+    transform:translate(-50%,-50%) rotate(45deg);
+  }
+}

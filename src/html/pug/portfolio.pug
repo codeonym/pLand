@@ -3,22 +3,22 @@ section#portfolio
         h2.row.slogan
             | hi i am ayoub <br>
             | a web developer
-        .row.gallery.swiper
+        .row.swiper-container
             .swiper-wrapper
-                .swiper-slide 1
-                .swiper-slide 2
-                .swiper-slide 3
-                .swiper-slide 4
-                .swiper-slide 5
-            .swiper-pagination
-            .swiper-button-prev
-                .fa.fa-solid.fa-arrow-left
-            .swiper-button-next
-                .fa.fa-solid.fa-arrow-right
-            .swiper-scrollbar
-                |   hello
+                -for(let i=1;i<=10;i++)
+                    .swiper-slide(data-position=i)
+                        img(src="./assets/images/slides/slide-0"+i+".jpg")
+            .swiper-btn.swiper-button-prev.fa.fa-solid.fa-circle-chevron-left
+            .swiper-btn.swiper-button-next.fa.fa-solid.fa-circle-chevron-right
         .row
+            h4 Lorem ipsum dolor sit amet, consectetur adipisicing.
         .row
             .col
+                .icon
+                p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum facere molestiae rerum sequi velit.
             .col
+                .icon
+                p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum facere molestiae rerum sequi velit.
             .col
+                .icon
+                p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum facere molestiae rerum sequi velit.

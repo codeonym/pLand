@@ -30,7 +30,7 @@ export default function navBar() {
 
         // resize event to show/hide the sidebar
         window.addEventListener("resize", function(){
-            // if the current window width less than 767px hide the sidebar
+            // if the current window width less than 767 px hide the sidebar
             if(+this.innerWidth >767){
                 sideBar.style.display="flex";
             }else {
