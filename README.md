@@ -6,7 +6,7 @@
 "pland" is a simple landing page project that showcases various projects and provides information about them. It is designed to highlight and promote your portfolio or any other projects you want to feature.
 
 ## Demo
-You can access the live demo of "pland" by following this link: [Demo](https://kiraxdesu.github.io/pLand/dist/main.html#projects)
+You can access the live demo of "pland" by following this link: [Demo](https://codeonym.github.io/pLand/dist/main.html#projects)
 
 ## Features
 - **Project Showcase**: Display information about your projects, including project names, descriptions, and links.
