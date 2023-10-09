@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kiraXdesu/portfolio_E.git"
+    "url": "git+https://github.com/codeonym/portfolio_E.git"
   },
   "keywords": [
     "portfolio",
@@ -20,12 +20,12 @@
     "gulp",
     "js"
   ],
-  "author": "kiraXdesu",
+  "author": "codeonym",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kiraXdesu/portfolio_E/issues"
+    "url": "https://github.com/codeonym/portfolio_E/issues"
   },
-  "homepage": "https://github.com/kiraXdesu/portfolio_E#readme",
+  "homepage": "https://github.com/codeonym/portfolio_E#readme",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
